@@ -115,7 +115,7 @@ acuracia <- function(test, pred) {
   sum(diag(tab))/sum(tab)
 }
 
-#dica do prof. LUÃS PAULO F. GARCIA, por email em 28/10/2020
+#dica do prof. LUÃƒÂS PAULO F. GARCIA, por email em 28/10/2020
 auc <- function(class, predicted) {
     
     auxAuc <- prediction(as.numeric(as.vector(predicted)), as.numeric(as.vector(class)))
@@ -164,8 +164,8 @@ for (i in 1:length(datasets))
 	#replace ? with NA
 	data[data == "?"] <- NA
   
-	#25/01/2021 - Os dados devem ser normalizados para uma melhor atuação dos kNN3 e kNN1
-	# para c4.5 os atributos contínuos devem ser discretizados 
+	#25/01/2021 - Os dados devem ser normalizados para uma melhor atuaÃ§Ã£o dos kNN3 e kNN1
+	# para c4.5 os atributos contÃ­nuos devem ser discretizados 
   
   
 	#MISSING VALUES
@@ -184,14 +184,14 @@ for (i in 1:length(datasets))
 	
 
 	#testado em 27/10/2020
-	# para cada fold executa a função (10 vezes)
+	# para cada fold executa a funÃ§Ã£o (10 vezes)
 	aux = mapply(function(tran, test) {
 	  
 	  #print(tran)
 	  #print(test)
 		
-		sapply(c("kNN3","kNN1", "C4.5","RF","SVM","ANN","CART"), function(clas) {
-		#sapply(c("C4.5","RF","CART"), function(clas) {
+		#sapply(c("kNN3","kNN1", "C4.5","RF","SVM","ANN","CART"), function(clas) {
+		sapply(c("C4.5","RF","CART"), function(clas) {
 		
 		pred = do.call(clas, list(tran, test))
 		
@@ -209,18 +209,18 @@ for (i in 1:length(datasets))
 	
 	#armazena os valores
 	#18/02/2021 - RETIRADA DOS ALGORITMOS NAO UTILIZADOS NA PESQUISA
-	AUCDF[i,"kNN3"] <- resultado[1]
-	AUCDF[i,"kNN1"] <- resultado[2]
-	AUCDF[i,"C4.5"] <- resultado[3]
-	AUCDF[i,"RF"] <- resultado[4]
-	AUCDF[i,"SVM"] <- resultado[5]
-	AUCDF[i,"ANN"] <- resultado[6]
-	AUCDF[i,"CART"] <- resultado[7]
+	#AUCDF[i,"kNN3"] <- resultado[1]
+	#AUCDF[i,"kNN1"] <- resultado[2]
+	#AUCDF[i,"C4.5"] <- resultado[3]
+	#AUCDF[i,"RF"] <- resultado[4]
+	#AUCDF[i,"SVM"] <- resultado[5]
+	#AUCDF[i,"ANN"] <- resultado[6]
+	#AUCDF[i,"CART"] <- resultado[7]
 	
 	#armazena os valores
-	#AUCDF[i,"C4.5"] <- resultado[1]
-	#AUCDF[i,"RF"] <- resultado[2]
-	#AUCDF[i,"CART"] <- resultado[3]
+	AUCDF[i,"C4.5"] <- resultado[1]
+	AUCDF[i,"RF"] <- resultado[2]
+	AUCDF[i,"CART"] <- resultado[3]
 }
 
 # get number of classes
